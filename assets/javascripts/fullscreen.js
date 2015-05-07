@@ -39,3 +39,30 @@
     cm.refresh();
   }
 });
+
+function fullscreenButton(textarea, editor) {
+  if (!document.createElement) { return; }
+  
+  if (!textarea) { return; }
+
+  if(!editor){ return; }
+  
+  if ((typeof(document["selection"]) == "undefined")
+  && (typeof(textarea["setSelectionRange"]) == "undefined")) {
+    return;
+  }
+
+  var button = document.createElement('button');
+  button.setAttribute('type','button');
+  button.tabIndex = 200;
+  button.className = "fullscreen";
+  button.title = "Fullscreen (F10)";
+
+  button.onclick = function() { 
+    editor.setOption("fullScreen", !editor.getOption("fullScreen"));
+    return false; 
+  };
+
+  textarea.parentNode.appendChild(button);
+
+}
