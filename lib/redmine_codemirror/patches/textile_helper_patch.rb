@@ -14,8 +14,13 @@ module RedmineCodeMirror
 
       module InstanceMethods
         def wikitoolbar_for_with_codemirror(field_id)
+
           heads_for_codemirror
-          wikitoolbar_for_without_codemirror(field_id) + javascript_tag(%(
+
+          url = "#{Redmine::Utils.relative_url_root}/help/#{current_language.to_s.downcase}/wiki_syntax.html"
+
+          # wikitoolbar_for_without_codemirror(field_id) +
+          javascript_tag(%(
             CodeMirror.defineMode("macro", function(config, parserConfig) {
               var macroOverlay = {
                 token: function(stream, state) {
@@ -72,12 +77,18 @@ module RedmineCodeMirror
             });
 
            fullscreenButton(editorWrapper, editor);
+            var wikiToolbar = new jsToolBar(editor);
+            wikiToolbar.setHelpLink('#{escape_javascript url}');
+            wikiToolbar.draw();
           ))
         end
 
         def heads_for_codemirror
           unless @heads_for_codemirror_included
             content_for :header_tags do
+              javascript_include_tag(:jstoolbar_codemirror, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:jstoolbar_textile, :plugin => 'redmine_codemirror') +
+              javascript_include_tag("jstoolbar/lang/jstoolbar-#{current_language.to_s.downcase}") +
               javascript_include_tag(:codemirror, :plugin => 'redmine_codemirror') +
               javascript_include_tag(:textile, :plugin => 'redmine_codemirror') +
               javascript_include_tag(:fullscreen, :plugin => 'redmine_codemirror') +
@@ -89,7 +100,8 @@ module RedmineCodeMirror
               stylesheet_link_tag(:fullscreen, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:foldgutter, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:redmine_syntax, :plugin => 'redmine_codemirror')+
-              stylesheet_link_tag(:theme_neo, :plugin => 'redmine_codemirror')
+              stylesheet_link_tag(:theme_neo, :plugin => 'redmine_codemirror') +
+              stylesheet_link_tag('jstoolbar')
             end
             @heads_for_codemirror_included = true
           end
