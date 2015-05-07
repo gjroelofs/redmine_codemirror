@@ -55,6 +55,7 @@ module RedmineCodeMirror
                   }
                 }
             });
+          fullscreenButton(area, editor);
           ))
         end
 
