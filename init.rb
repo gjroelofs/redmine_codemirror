@@ -1,6 +1,6 @@
 require 'redmine_codemirror'
 
-Redmine::Plugin.register :redmine_zenedit do
+Redmine::Plugin.register :redmine_codemirror do
   name 'Redmine CodeMirror plugin'
   author 'CodePoKE'
   description 'This is a CodeMirror edit plugin for Redmine wiki'
