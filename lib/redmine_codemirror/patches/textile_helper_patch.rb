@@ -62,7 +62,16 @@ module RedmineCodeMirror
               cm.save();
             });
 
-           fullscreenButton(editor.getWrapperElement(), editor);
+            var editorWrapper = editor.getWrapperElement();
+
+            editorWrapper.resizable({
+              resize: function() {
+                editor.setSize($(this).width(), $(this).height());
+                editor.refresh();
+              }
+            });
+
+           fullscreenButton(editorWrapper, editor);
           ))
         end
 
