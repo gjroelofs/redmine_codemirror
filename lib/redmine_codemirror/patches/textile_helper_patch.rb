@@ -36,7 +36,7 @@ module RedmineCodeMirror
               return CodeMirror.overlayMode(CodeMirror.getMode(config, parserConfig.backdrop || "text/x-textile"), macroOverlay);
             });
 
-            var editor = CodeMirror.fromTextArea(document.getElementById(#{field_id}), {
+            var editor = CodeMirror.fromTextArea(document.getElementById("#{field_id}"), {
                 lineNumbers: true,
                 mode: "macro",
                 lineWrapping: true,
