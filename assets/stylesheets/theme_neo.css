@@ -1,7 +1,9 @@
 /* neo theme for codemirror */
 
 /* Color scheme */
-
+.CodeMirror{
+	border: 1px solid #ddd;
+}
 .cm-s-neo.CodeMirror {
   background-color:#ffffff;
   color:#2e383c;
