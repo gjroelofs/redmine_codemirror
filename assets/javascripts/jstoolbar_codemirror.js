@@ -42,7 +42,8 @@ function jsToolBar(textarea) {
 	
 	this.toolbar = document.createElement("div");
 	this.toolbar.className = 'jstElements';
-	this.textarea.parentNode.insertBefore(this.toolbar, this.textarea);
+	var target = this.textarea.getWrapperElement();
+	target.parentNode.insertBefore(this.toolbar, target);
 		
 	this.context = null;
 	this.toolNodes = {}; // lorsque la toolbar est dessinée , cet objet est garni 
