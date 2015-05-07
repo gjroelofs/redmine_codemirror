@@ -17,9 +17,10 @@ button.fullscreen, button.fullscreen.theme {
   background-position: 50% 50%;
   background-repeat: no-repeat;
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 25px;
+  top: 10px;
   opacity: 0.5;
+  z-index: 100;
 }
 
 button.fullscreen:hover {

@@ -40,18 +40,11 @@
   }
 });
 
-function fullscreenButton(textarea, editor) {
+function fullscreenButton(target, editor) {
   if (!document.createElement) { return; }
   
-  if (!textarea) { return; }
-
-  if(!editor){ return; }
+  if (!target) { return; }
   
-  if ((typeof(document["selection"]) == "undefined")
-  && (typeof(textarea["setSelectionRange"]) == "undefined")) {
-    return;
-  }
-
   var button = document.createElement('button');
   button.setAttribute('type','button');
   button.tabIndex = 200;
@@ -63,6 +56,6 @@ function fullscreenButton(textarea, editor) {
     return false; 
   };
 
-  textarea.parentNode.appendChild(button);
+  target.appendChild(button);
 
 }
