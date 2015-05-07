@@ -16,39 +16,41 @@ module RedmineCodeMirror
         def wikitoolbar_for_with_codemirror(field_id)
           heads_for_codemirror
           wikitoolbar_for_without_codemirror(field_id) + javascript_tag(%(
-            CodeMirror.defineMode('#{escape_javascript "macro"}', function(config, parserConfig) {
+            CodeMirror.defineMode("macro", function(config, parserConfig) {
               var macroOverlay = {
                 token: function(stream, state) {
                   var ch;
-                  if (stream.match('#{escape_javascript "{{"}')) {
+                  if (stream.match("{{")) {
                     while ((ch = stream.next()) != null)
                       if (ch == "}" && stream.next() == "}") {
                         stream.eat("}");
-                        return "macro";
+                        return "keyword";
                       }
+                  } else if (stream.match("TODO")) {
+                    return "todo";
                   }
-                  while (stream.next() != null && !stream.match('#{escape_javascript "{{"}', false)) {}
+                  while (stream.next() != null && !stream.match("{{", false) && !stream.match("TODO", false)) {}
                   return null;
                 }
               };
-              return CodeMirror.overlayMode(CodeMirror.getMode(config, parserConfig.backdrop || '#{escape_javascript "text/x-textile"}'), macroOverlay);
+              return CodeMirror.overlayMode(CodeMirror.getMode(config, parserConfig.backdrop || "text/x-textile"), macroOverlay);
             });
 
-            var editor = CodeMirror.fromTextArea(document.getElementById('#{escape_javascript "content_text"}'), {
+            var editor = CodeMirror.fromTextArea(document.getElementById('"content_text"), {
                 lineNumbers: true,
-                mode: '#{escape_javascript "macro"}',
+                mode: "macro",
                 lineWrapping: true,
                 foldGutter: true,
-                theme: '#{escape_javascript "neo"}',
-                gutters: ['#{escape_javascript "CodeMirror-linenumbers"}', '#{escape_javascript "CodeMirror-foldgutter"}'],
+                theme: "neo",
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                 extraKeys: {
-                  '#{escape_javascript "F10"}': function(cm) {
-                    cm.setOption('#{escape_javascript "fullScreen"}', !cm.getOption('#{escape_javascript "fullScreen"}'));
+                 "F10": function(cm) {
+                    cm.setOption("fullScreen", !cm.getOption("fullScreen"));
                   },
-                  '#{escape_javascript "Esc"}': function(cm) {
-                    if (cm.getOption('#{escape_javascript "fullScreen"}')) cm.setOption('#{escape_javascript "fullScreen"}', false);
+                  "Esc": function(cm) {
+                    if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
                   },
-                  '#{escape_javascript "Ctrl-Q"}': function(cm){ 
+                  "Ctrl-Q": function(cm){ 
                     cm.foldCode(cm.getCursor()); 
                   }
                 }

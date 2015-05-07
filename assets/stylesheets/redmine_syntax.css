@@ -5,3 +5,4 @@
 .cm-header-5 { font-size: 100%; }
 .cm-header-6 { font-size: 90%; }
 .cm-macro { color: #0ca; }
+.cm-todo { color: RED; font-weight: bold; font-size: 120%; }

@@ -13,6 +13,30 @@
 .cm-s-neo .cm-node,.cm-s-neo .cm-tag {color:#9c3328}
 .cm-s-neo .cm-string {color:#b35e14}
 .cm-s-neo .cm-variable,.cm-s-neo .cm-qualifier {color:#047d65}
+.cm-s-neo .cm-variable-2 {color: #05a;}
+.cm-s-neo .cm-variable-3 {color: #085;}
+
+.cm-s-neo .cm-number {color: #164;}
+.cm-s-neo .cm-def {color: #00f;}
+.cm-s-neo .cm-variable,
+.cm-s-neo .cm-punctuation,
+.cm-s-neo .cm-property,
+.cm-s-neo .cm-operator {}
+.cm-s-neo .cm-variable-2 {color: #05a;}
+.cm-s-neo .cm-variable-3 {color: #085;}
+.cm-s-neo .cm-comment {color: #a50;}
+.cm-s-neo .cm-string {color: #a11;}
+.cm-s-neo .cm-string-2 {color: #f50;}
+.cm-s-neo .cm-meta {color: #555;}
+.cm-s-neo .cm-qualifier {color: #555;}
+.cm-s-neo .cm-builtin {color: #30a;}
+.cm-s-neo .cm-bracket {color: #997;}
+.cm-s-neo .cm-tag {color: #170;}
+.cm-s-neo .cm-qualifier {color: #170;}
+.cm-s-neo .cm-attribute {color: #00c;}
+.cm-s-neo .cm-quote {color: #090;}
+.cm-s-neo .cm-hr {color: #999;}
+.cm-s-neo .cm-link {color: #00c;}
 
 
 /* Editor styling */
