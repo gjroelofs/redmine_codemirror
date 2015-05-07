@@ -20,7 +20,7 @@ module RedmineCodeMirror
                 lineNumbers: true,
                 mode: '#{escape_javascript "text/x-textile"}'
             });
-          )
+          ))
         end
 
         def heads_for_codemirror
