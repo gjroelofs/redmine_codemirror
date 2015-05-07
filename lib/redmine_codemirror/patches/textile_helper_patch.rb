@@ -16,11 +16,30 @@ module RedmineCodeMirror
         def wikitoolbar_for_with_codemirror(field_id)
           heads_for_codemirror
           wikitoolbar_for_without_codemirror(field_id) + javascript_tag(%(
+            CodeMirror.defineMode('#{escape_javascript "macro"}', function(config, parserConfig) {
+              var macroOverlay = {
+                token: function(stream, state) {
+                  var ch;
+                  if (stream.match('#{escape_javascript "{{"}')) {
+                    while ((ch = stream.next()) != null)
+                      if (ch == "}" && stream.next() == "}") {
+                        stream.eat("}");
+                        return "macro";
+                      }
+                  }
+                  while (stream.next() != null && !stream.match('#{escape_javascript "{{"}', false)) {}
+                  return null;
+                }
+              };
+              return CodeMirror.overlayMode(CodeMirror.getMode(config, parserConfig.backdrop || '#{escape_javascript "text/x-textile"}'), macroOverlay);
+            });
+
             var editor = CodeMirror.fromTextArea(document.getElementById('#{escape_javascript "content_text"}'), {
                 lineNumbers: true,
-                mode: '#{escape_javascript "text/x-textile"}',
+                mode: '#{escape_javascript "macro"}',
                 lineWrapping: true,
                 foldGutter: true,
+                theme: '#{escape_javascript "neo"}',
                 gutters: ['#{escape_javascript "CodeMirror-linenumbers"}', '#{escape_javascript "CodeMirror-foldgutter"}'],
                 extraKeys: {
                   '#{escape_javascript "F10"}': function(cm) {
@@ -46,10 +65,12 @@ module RedmineCodeMirror
               javascript_include_tag(:foldcode, :plugin => 'redmine_codemirror') +
               javascript_include_tag(:foldgutter, :plugin => 'redmine_codemirror') +
               javascript_include_tag(:textile_fold, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:overlay, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:codemirror, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:fullscreen, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:foldgutter, :plugin => 'redmine_codemirror') +
-              stylesheet_link_tag(:variableheight, :plugin => 'redmine_codemirror')
+              stylesheet_link_tag(:redmine_syntax, :plugin => 'redmine_codemirror')+
+              stylesheet_link_tag(:theme_neo, :plugin => 'redmine_codemirror')
             end
             @heads_for_codemirror_included = true
           end
