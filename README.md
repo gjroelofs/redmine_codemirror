@@ -12,5 +12,4 @@ TODO / Bugs:
 - Fix preview
 - Integrate "Kitchen Sink"
 - Autocomplete for macro's
-- Fix Fullscreen CSS
-- Allow issue usage
+- Also use editor for issues
