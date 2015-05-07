@@ -27,6 +27,7 @@ module RedmineCodeMirror
           unless @heads_for_codemirror_included
             content_for :header_tags do
               javascript_include_tag(:codemirror, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:textile, :plugin => 'redmine_codemirror') +
               stylesheet_link_tag(:codemirror, :plugin => 'redmine_codemirror')
             end
             @heads_for_codemirror_included = true
