@@ -4,7 +4,7 @@ CodeMirror integration plugin for Redmine wiki.
 
 Features:
 - Syntax highlighting + CSS for headers
-- Folding
+- Folding (Ctrl-Q or sidebar)
 - Fullscreen (F10/esc)
 - TODO marker, macro syntax
 
