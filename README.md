@@ -6,6 +6,7 @@ Features:
 - Syntax highlighting + CSS for headers
 - Folding
 - Fullscreen (F10/esc)
+- TODO marker, macro syntax
 
 TODO / Bugs:
 - Fix preview
