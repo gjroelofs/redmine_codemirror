@@ -18,7 +18,21 @@ module RedmineCodeMirror
           wikitoolbar_for_without_codemirror(field_id) + javascript_tag(%(
             var editor = CodeMirror.fromTextArea(document.getElementById('#{escape_javascript "content_text"}'), {
                 lineNumbers: true,
-                mode: '#{escape_javascript "text/x-textile"}'
+                mode: '#{escape_javascript "text/x-textile"}',
+                lineWrapping: true,
+                foldGutter: true,
+                gutters: ['#{escape_javascript "CodeMirror-linenumbers"}', '#{escape_javascript "CodeMirror-foldgutter"}'],
+                extraKeys: {
+                  '#{escape_javascript "F10"}': function(cm) {
+                    cm.setOption('#{escape_javascript "fullScreen"}', !cm.getOption('#{escape_javascript "fullScreen"}'));
+                  },
+                  '#{escape_javascript "Esc"}': function(cm) {
+                    if (cm.getOption('#{escape_javascript "fullScreen"}')) cm.setOption('#{escape_javascript "fullScreen"}', false);
+                  },
+                  '#{escape_javascript "Ctrl-Q"}': function(cm){ 
+                    cm.foldCode(cm.getCursor()); 
+                  }
+                }
             });
           ))
         end
@@ -28,7 +42,14 @@ module RedmineCodeMirror
             content_for :header_tags do
               javascript_include_tag(:codemirror, :plugin => 'redmine_codemirror') +
               javascript_include_tag(:textile, :plugin => 'redmine_codemirror') +
-              stylesheet_link_tag(:codemirror, :plugin => 'redmine_codemirror')
+              javascript_include_tag(:fullscreen, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:foldcode, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:foldgutter, :plugin => 'redmine_codemirror') +
+              javascript_include_tag(:textile_fold, :plugin => 'redmine_codemirror') +
+              stylesheet_link_tag(:codemirror, :plugin => 'redmine_codemirror') +
+              stylesheet_link_tag(:fullscreen, :plugin => 'redmine_codemirror') +
+              stylesheet_link_tag(:foldgutter, :plugin => 'redmine_codemirror') +
+              stylesheet_link_tag(:variableheight, :plugin => 'redmine_codemirror')
             end
             @heads_for_codemirror_included = true
           end
