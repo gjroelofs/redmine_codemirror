@@ -1,6 +1,7 @@
 # redmine_codemirror
 
 CodeMirror integration plugin for Redmine editor (wiki/issues).
+It allows the user to use Textile, but with a visual markup along the lines of WYSIWYM.
 
 Features:
 - Syntax highlighting + CSS for headers
@@ -8,8 +9,7 @@ Features:
 - Fullscreen (F10/esc)
 - TODO marker, macro syntax
 
-TODO / Bugs:
-- Fix preview
+TODO / Known Bugs:
 - Integrate "Kitchen Sink"
 - Autocomplete
 -- Macros
