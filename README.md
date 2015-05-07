@@ -1,5 +1,7 @@
 # redmine_codemirror
 
+![Editor Preview][https://github.com/gjroelofs/redmine_codemirror/blob/master/editor_preview.png]
+
 CodeMirror integration plugin for Redmine editor (wiki/issues).
 It allows the user to use Textile, but with a visual markup along the lines of WYSIWYM.
 
