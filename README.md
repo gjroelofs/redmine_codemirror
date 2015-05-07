@@ -1,6 +1,6 @@
 # redmine_codemirror
 
-CodeMirror integration plugin for Redmine wiki.
+CodeMirror integration plugin for Redmine editor (wiki/issues).
 
 Features:
 - Syntax highlighting + CSS for headers
@@ -11,5 +11,7 @@ Features:
 TODO / Bugs:
 - Fix preview
 - Integrate "Kitchen Sink"
-- Autocomplete for macro's
-- Also use editor for issues
+- Autocomplete
+-- Macros
+-- Pages
+-- Attachments
