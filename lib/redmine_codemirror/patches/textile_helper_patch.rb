@@ -56,6 +56,12 @@ module RedmineCodeMirror
                   }
                 }
             });
+
+            // To make sure the TextArea is updated for the preview function, TODO: hook into preview logic
+            editor.on('change',function(cm){
+              area.value = cm.getValue();
+            });
+
            fullscreenButton(editor.getWrapperElement(), editor);
           ))
         end
