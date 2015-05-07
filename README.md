@@ -1,4 +1,4 @@
-# redmine_codemirror
+# Redmine Code Mirror Editor plugin - Wiki/Issues
 
 ![Editor Preview](https://github.com/gjroelofs/redmine_codemirror/blob/master/editor_preview.png)
 
@@ -17,3 +17,5 @@ TODO / Known Bugs:
 -- Macros
 -- Pages
 -- Attachments
+
+Icon Asset from: https://bitbucket.org/redminecrm/redmine_zenedit/src
