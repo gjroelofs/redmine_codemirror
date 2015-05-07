@@ -1,0 +1,1 @@
+require 'redmine_zenedit/patches/textile_helper_patch'
