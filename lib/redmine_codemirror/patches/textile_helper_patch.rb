@@ -64,7 +64,7 @@ module RedmineCodeMirror
 
             var editorWrapper = editor.getWrapperElement();
 
-            editorWrapper.resizable({
+            $(editorWrapper).resizable({
               resize: function() {
                 editor.setSize($(this).width(), $(this).height());
                 editor.refresh();
