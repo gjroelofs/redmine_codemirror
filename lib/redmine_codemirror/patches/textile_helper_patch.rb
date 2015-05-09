@@ -61,11 +61,19 @@ module RedmineCodeMirror
                   }
                 }
             });
+            
+            area.id = "old_#{field_id}";
+            editor.getInputField().id = "#{field_id}";
 
             // To make sure the TextArea is updated for the preview function, TODO: hook into preview logic
             editor.on('change',function(cm){
               cm.save();
             });
+		
+	    // FIX: sizing issue when div was first hidden
+            editor.on('focus', function(){
+		editor.refresh();
+	    });
 
             var editorWrapper = editor.getWrapperElement();
 
