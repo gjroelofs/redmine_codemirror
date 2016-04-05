@@ -4,6 +4,7 @@
 
 CodeMirror integration plugin for Redmine editor (wiki/issues).
 It allows the user to use Textile, but with a WYSIWYM editor which highlights Textile syntax.
+It replaces the default editor in Redmine.
 
 Tested on Redmine 2.3.x
 
